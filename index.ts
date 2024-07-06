@@ -3,7 +3,8 @@ import {App, LogLevel} from '@slack/bolt';
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
   signingSecret: process.env.SLACK_SIGNING_SECRET,
-  logLevel: LogLevel.DEBUG
+  logLevel: LogLevel.DEBUG,
+  // endpoints: "/aaaa"
 });
 
 // URL検証エンドポイント
@@ -59,5 +60,6 @@ async function handleGroupMention(groupId: string, sourceChannel: string, text: 
 (async () => {
   console.log({port: process.env.PORT || 3000});
   await app.start(process.env.PORT || 3000);
+  console.log(app);
   console.log('⚡️ Bolt app is running!');
 })();
